@@ -7,8 +7,7 @@
 ![sparrowchick](https://github.com/danielsmar/UVV_Ling_Prog_CC3M/blob/main/PSET2/test_results/test_results_pset/test_inverted/sparrowchick.png)
 ![sparrowchick_inverted](https://github.com/danielsmar/UVV_Ling_Prog_CC3M/blob/main/PSET2/test_results/test_results_pset/test_inverted/sparrowchick_inverted.png)
 
-QUESTÃO 02: faça a depuração e, quando terminar, seu código deve conseguir
-passar em todos os testes do grupo de teste TestInvertido (incluindo especificamente
-o que você acabou de criar). Execute seu filtro de inversão na imagem
-imagens_teste/peixe.png, salve o resultado como uma imagem PNG
-e salve a imagem em seu repositório GitHub.
+### QUESTÃO 02: Faça a depuração e, quando terminar, seu código deve conseguir passar em todos os testes do grupo de teste TestInvertido (incluindo especificamente o que você acabou de criar). Execute seu filtro de inversão na imagem imagens_teste/peixe.png, salve o resultado como uma imagem PNG e salve a imagem em seu repositório GitHub.
+![bluegill](https://github.com/danielsmar/UVV_Ling_Prog_CC3M/blob/main/PSET2/test_results/test_results_pset/test_inverted/bluegill.png)
+![bluegill_inverted](https://github.com/danielsmar/UVV_Ling_Prog_CC3M/blob/main/PSET2/test_results/test_results_pset/test_inverted/bluegill_inverted.png)
+
