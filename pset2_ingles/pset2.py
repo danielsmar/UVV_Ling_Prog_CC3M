@@ -10,6 +10,9 @@ from PIL import Image as PILImage
 
 ## NO ADDITIONAL IMPORTS ALLOWED!
 
+def kernel_blur(n):
+        return [[1 / (n ** 2) for x in range(n)]for x in range(n)]
+
 class Image:
     def __init__(self, width, height, pixels):
         self.width = width
@@ -31,17 +34,81 @@ class Image:
                 result.set_pixel(x, y, newcolor)
         return result
 
+    def valid_pixels(self):
+        for i in range(len(self.pixels)):
+            self.pixels[i] = int(round(self.pixels[i]))
+            if self.pixels[i] < 0:
+                self.pixels[i] = 0
+            elif self.pixels[i] > 255:
+                self.pixels[i] = 255
+
+    def get_pixel_extend(self, x, y):
+        if x > self.width-1:
+            x = self.width-1
+        elif x < 0:
+            x = 0
+        if y > self.height-1:
+            y = self.height-1
+        elif y < 0:
+            y = 0
+        return self.get_pixel(x ,y)
+
+    def correlate(self, kernel):
+        result = Image.new(self.width, self.height) # cria uma nova imagem de correlação
+        meio_kernel = len(kernel)//2 # pega o meio do kernel
+        
+        for y in range(self.height):
+            for x in range(self.width):
+                correlation = 0 # valor de correlação da imagem com kernel
+                
+                for yk in range(len(kernel)):
+                    for xk in range(len(kernel[yk])):
+                        x1 = x - meio_kernel + xk
+                        y1 = y - meio_kernel + yk
+                        correlation += self.get_pixel_extend(x1, y1) * kernel[xk][yk]
+                result.set_pixel(x, y, correlation)
+        return result
+
     def inverted(self):
         return self.apply_per_pixel(lambda c: 255-c)
 
     def blurred(self, n):
-        raise NotImplementedError
+        kernel = kernel_blur(n)
+        result = self.correlate(kernel)
+        result.valid_pixels()
+        return result
 
     def sharpened(self, n):
-        raise NotImplementedError
+        result = Image.new(self.width, self.height)
+        blurred = self.correlate(kernel_blur(n))
+
+        for y in range(self.height):
+           for x in range(self.width):
+            color = 2 * self.get_pixel(x,y) - blurred.get_pixel(x,y)
+            result.set_pixel(x,y,color)
+        result.valid_pixels()
+        return result
 
     def edges(self):
-        raise NotImplementedError
+        kx = [[-1, 0, 1],
+              [-2, 0, 2],
+              [-1, 0, 1]]
+        
+        ky = [[-1, -2, -1],
+              [ 0,  0,  0],
+              [ 1,  2,  1]]
+
+        result = Image.new(self.width, self.height)
+
+        ox = self.correlate(kx)
+        oy = self.correlate(ky)
+
+        for y in range(self.height):
+            for x in range(self.width):
+                color = (math.sqrt(ox.get_pixel(x,y)**2 + oy.get_pixel(x,y)**2))
+                result.set_pixel(x, y, color)
+        result.valid_pixels()
+        return result
 
 
     # Below this point are utilities for loading, saving, and displaying
