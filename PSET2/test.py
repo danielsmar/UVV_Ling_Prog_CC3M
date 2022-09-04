@@ -52,11 +52,17 @@ class TestInverted(unittest.TestCase):
         self.assertTrue(img != img_inverted)
 
     def test_inverted_3(self):
-        img = pset2.Image.load('test_images/sparrowchick.png')
-        
+        img = pset2.Image.load('test_images/sparrowchick.png')        
         img.save("test_results/test_results_pset/test_inverted/sparrowchick.png")
         img_inverted = img.inverted()
         img_inverted.save("test_results/test_results_pset/test_inverted/sparrowchick_inverted.png")
+        self.assertTrue(img != img_inverted)
+
+    def test_inverted_4(self):
+        img = pset2.Image.load('test_images/bluegill.png')        
+        img.save("test_results/test_results_pset/test_inverted/bluegill.png")
+        img_inverted = img.inverted()
+        img_inverted.save("test_results/test_results_pset/test_inverted/bluegill_inverted.png")
         self.assertTrue(img != img_inverted)
 
     def test_inverted_images(self):
