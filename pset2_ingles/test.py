@@ -44,12 +44,11 @@ class TestInverted(unittest.TestCase):
         self.assertEqual(result,  expected)
 
     def test_inverted_2(self):
-        # REPLACE THIS from your test case from section 3.1
         img = pset2.Image.new(4,1)
         img.pixels = [29,89,136,200]
-        img.save("teste.png")
+        img.save("test_results/test_results_pset/questao_1.png")
         img_inverted = img.inverted()
-        img_inverted.save("teste_inverted.png")
+        img_inverted.save("test_results/test_results_pset/questao_1_inverted.png")
         self.assertTrue(img != img_inverted)
 
     def test_inverted_images(self):
@@ -63,6 +62,21 @@ class TestInverted(unittest.TestCase):
 
 
 class TestFilters(unittest.TestCase):
+
+    def test_correlate(self): 
+        
+        im = pset2.Image.load('test_images/chess.png')
+        im.save("test_results/test_results_pset/result_test_correlated.png")
+        
+        kernel = [[ 0.00, -0.07,  0.00],
+                  [-0.45,  1.20, -0.25],
+                  [ 0.00, -0.12,  0.00]]
+        
+        result = im.correlate(kernel) 
+        result.save('test_results/test_results_pset/img_correlated.png')
+        
+        self.assertTrue(im.correlate(kernel) == result )
+
     def test_blurred(self):
         for kernsize in (1, 3, 7):
             for fname in ('mushroom', 'twocats', 'chess'):
@@ -76,6 +90,33 @@ class TestFilters(unittest.TestCase):
                     self.assertEqual(input_img, input_img_copy, "Be careful not to modify the original image!")
                     self.assertEqual(result,  expected)
 
+    def test_blurred_1(self): 
+        img=pset2.Image.load('test_images/twocats.png')
+        img.save("test_results/twocats.png")
+        result = img.blurred(3)
+        result.save("test_results/result_twocats_test_blurred_1.png")
+
+        self.assertNotEqual(result, img)
+
+    def test_blurred_2(self): 
+        img=pset2.Image.load('test_images/bluegill.png')
+        img.save("test_results/bluegill.png")
+        result = img.blurred(6)
+        result.save("test_results/result_bluegill_test_blurred_2.png")
+
+        self.assertNotEqual(result, img)
+
+    def test_blurred_3(self): 
+        img=pset2.Image.load('test_images/python.png')
+        img.save("test_results/python.png")
+        result = img.blurred(2)
+        result.save("test_results/result_python_test_blurred_3.png")
+
+        self.assertNotEqual(result, img)
+        
+
+    
+
     def test_sharpened(self):
         for kernsize in (1, 3, 9):
             for fname in ('mushroom', 'twocats', 'chess'):
@@ -88,6 +129,14 @@ class TestFilters(unittest.TestCase):
                     expected = pset2.Image.load(expfile)
                     self.assertEqual(input_img, input_img_copy, "Be careful not to modify the original image!")
                     self.assertEqual(result,  expected)
+
+    def test_sharpened_1(self):
+        img=pset2.Image.load('test_images/python.png')
+        img.save("test_results/python.png")
+        result = img.sharpened(2)
+        result.save("test_results/result_python_test_sharpened_1.png")
+
+        self.assertNotEqual(result, img)
 
     def test_edges(self):
         for fname in ('mushroom', 'twocats', 'chess'):
