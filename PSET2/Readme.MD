@@ -11,3 +11,8 @@
 ![bluegill](https://github.com/danielsmar/UVV_Ling_Prog_CC3M/blob/main/PSET2/test_results/test_results_pset/test_inverted/bluegill.png)
 ![bluegill_inverted](https://github.com/danielsmar/UVV_Ling_Prog_CC3M/blob/main/PSET2/test_results/test_results_pset/test_inverted/bluegill_inverted.png)
 
+### QUESTÃO 03: considere uma etapa de correlacionar uma imagem com o seguinte kernel:
+        kernel = [[ 0.00, -0.07,  0.00],
+                  [-0.45,  1.20, -0.25],
+                  [ 0.00, -0.12,  0.00]]
+### Qual será o valor do pixel na imagem de saída no local indicado pelo destaque vermelho? Observe que neste ponto ainda não arredondamos ou recortamos o valor, informe exatamente como você calculou. Observação: demonstre passo a passo os cálculos realizados.
