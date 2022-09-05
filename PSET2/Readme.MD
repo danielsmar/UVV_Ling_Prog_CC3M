@@ -53,3 +53,5 @@ Evidencia as bordas no eixo Y da imagem
        ky = [[-1, -2, -1],
              [ 0,  0,  0],
              [ 1,  2,  1]]
+![construct](https://github.com/danielsmar/UVV_Ling_Prog_CC3M/blob/main/PSET2/test_results/test_results_pset/test_edges/construct.png)
+![construct_edges](https://github.com/danielsmar/UVV_Ling_Prog_CC3M/blob/main/PSET2/test_results/test_results_pset/test_edges/construct_edge.png)
