@@ -11,21 +11,30 @@ from PIL import Image as PILImage
 ## NO ADDITIONAL IMPORTS ALLOWED!
 
 def kernel_blur(n):
-        return [[1 / pow(n,2) for x in range(n)]for x in range(n)]
+        """ Retorna kernel n*n com valores 1/n² """
+        return [[1 / pow(n,2) for x in range(n)]for x in range(n)]  
 
 class Image:                                 
-    def __init__(self, width, height, pixels): #Define os valores na imagem (altura, comprimento,matriz do pixel)
+    def __init__(self, width, height, pixels):
+        """Define os valores na imagem (altura, comprimento,matriz do pixel)"""
         self.width = width
         self.height = height
         self.pixels = pixels
 
-    def get_pixel(self, x, y):#Retorna um pixel da imagem
+    def get_pixel(self, x, y):
+       """#Retorna um pixel da imagem"""
         return self.pixels[y*self.width +x] 
 
-    def set_pixel(self, x, y, c): #define o pixel da imagem
+    def set_pixel(self, x, y, c):
+        """define o pixel da imagem"""
         self.pixels[y*self.width +x] = c
 
     def apply_per_pixel(self, func):
+        """
+        Retorna uma nova imagem com mesma largura e altura da imagem base, e percorre
+        cada pixel coletando a localização das cores do pixel. 
+        Seta a nova cor da imagem.
+        """
         result = Image.new(self.width, self.height)
         for y in range(result.height):
             for x in range(result.width):
@@ -35,6 +44,9 @@ class Image:
         return result
 
     def valid_pixels(self):
+        """
+        Arredonda e restrige os valores dos pixels negativos e maiores que 255
+        """
         for i in range(len(self.pixels)):
             self.pixels[i] = int(round(self.pixels[i]))
             if self.pixels[i] < 0:
@@ -43,6 +55,10 @@ class Image:
                 self.pixels[i] = 255
 
     def get_pixel_extend(self, x, y):
+        """
+        Retorna o valor do pixel na posição especificada (x, y). 
+        Se a posição estiver fora do intervalo, retorna o valor de pixel válido mais próximo.
+        """
         if x > self.width-1:
             x = self.width-1
         elif x < 0:
@@ -54,12 +70,15 @@ class Image:
         return self.get_pixel(x ,y)
 
     def correlate(self, kernel):
-        result = Image.new(self.width, self.height) # cria uma nova imagem de correlação
-        meio_kernel = len(kernel)//2 # pega o meio do kernel
+        """
+        Aplica o kernel na imagem e multiplica os itens de acordo com kernel
+        """
+        result = Image.new(self.width, self.height) 
+        meio_kernel = len(kernel)//2 
         
         for y in range(self.height):
             for x in range(self.width):
-                correlation = 0 # valor de correlação da imagem com kernel
+                correlation = 0 
                 
                 for yk in range(len(kernel)):
                     for xk in range(len(kernel[yk])):
@@ -70,15 +89,24 @@ class Image:
         return result
 
     def inverted(self):
+        """
+        Inverter os pixels da imagem
+        """
         return self.apply_per_pixel(lambda c: 255-c)
 
     def blurred(self, n):
+        """
+        Aplica o filtro de blur(Desfoque) na imagem
+        """
         kernel = kernel_blur(n)
         result = self.correlate(kernel)
         result.valid_pixels()
         return result
 
     def sharpened(self, n):
+        """
+        Aplica o filtro de Nitidez (Foco) na imagem
+        """
         result = Image.new(self.width, self.height)
         blurred = self.correlate(kernel_blur(n))
 
@@ -90,6 +118,9 @@ class Image:
         return result
 
     def edges(self):
+        """
+        Detecta bordas nas imagens
+        """
         kx = [[-1, 0, 1],
               [-2, 0, 2],
               [-1, 0, 1]]
