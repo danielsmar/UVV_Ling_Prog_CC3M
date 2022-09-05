@@ -33,3 +33,5 @@ O(x,y) = 32.76
                  [0, 0, 0, 0, 0, 0, 0, 0, 0],
                  [0, 0, 0, 0, 0, 0, 0, 0, 0],
                  [0, 0, 0, 0, 0, 0, 0, 0, 0]]
+![pigbird](https://github.com/danielsmar/UVV_Ling_Prog_CC3M/blob/main/PSET2/test_results/test_results_pset/test_blurred/pigbird.png)
+![pigbirg_correlated](https://github.com/danielsmar/UVV_Ling_Prog_CC3M/blob/main/PSET2/test_results/test_results_pset/test_blurred/pigbird_correlated.png)
