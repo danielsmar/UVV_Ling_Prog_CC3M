@@ -41,3 +41,15 @@ Utilizando filtro de nitidez na imagem python.png com um kernel de tamanho 11.
 
 ![python](https://github.com/danielsmar/UVV_Ling_Prog_CC3M/blob/main/PSET2/test_results/test_results_pset/test_sharpened/python.png)
 ![python_sharpened](https://github.com/danielsmar/UVV_Ling_Prog_CC3M/blob/main/PSET2/test_results/test_results_pset/test_sharpened/python_sharpened.png)
+
+### QUESTÃO 06: explique o que cada um dos kernels acima, por si só, está fazendo. Tente executar mostrar nos resultados dessas correlações intermediárias para ter uma noção do que está acontecendo aqui.
+Evidencia as bordas no eixo X da imagem
+       
+        kx = [[-1, 0, 1],
+              [-2, 0, 2],
+              [-1, 0, 1]]
+Evidencia as bordas no eixo Y da imagem         
+     
+       ky = [[-1, -2, -1],
+             [ 0,  0,  0],
+             [ 1,  2,  1]]
