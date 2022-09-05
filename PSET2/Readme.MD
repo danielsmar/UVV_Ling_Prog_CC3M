@@ -3,9 +3,7 @@
 
 
  ### QUESTÃO 01: Se você passar essa imagem pelo filtro de inversão, qual seria o output esperado? Justifique sua resposta.
-#### O output esperado seria a inversão das cores, no nosso caso a cor branca inveteria para preto e preta inverteria para branco.
-![sparrowchick](https://github.com/danielsmar/UVV_Ling_Prog_CC3M/blob/main/PSET2/test_results/test_results_pset/test_inverted/sparrowchick.png)
-![sparrowchick_inverted](https://github.com/danielsmar/UVV_Ling_Prog_CC3M/blob/main/PSET2/test_results/test_results_pset/test_inverted/sparrowchick_inverted.png)
+#### O output esperado seria a inversão das cores (4, 1, [226, 166, 119, 55]), pois o filtro de inversão reflete os pixels sobre o valor de cinza médio, ou seja, preto se torna branco e vice-versa.
 
 ### QUESTÃO 02: Faça a depuração e, quando terminar, seu código deve conseguir passar em todos os testes do grupo de teste TestInvertido (incluindo especificamente o que você acabou de criar). Execute seu filtro de inversão na imagem imagens_teste/peixe.png, salve o resultado como uma imagem PNG e salve a imagem em seu repositório GitHub.
 ![bluegill](https://github.com/danielsmar/UVV_Ling_Prog_CC3M/blob/main/PSET2/test_results/test_results_pset/test_inverted/bluegill.png)
@@ -36,19 +34,29 @@ O(x,y) = 32.76
 ![pigbird](https://github.com/danielsmar/UVV_Ling_Prog_CC3M/blob/main/PSET2/test_results/test_results_pset/test_blurred/pigbird.png)
 ![pigbirg_correlated](https://github.com/danielsmar/UVV_Ling_Prog_CC3M/blob/main/PSET2/test_results/test_results_pset/test_blurred/pigbird_correlated.png)
 
+### Quando você terminar e seu código passar em todos os testes relacionados ao desfoque, execute seu filtro na imagem imagens_teste/gato.png com um kernel de desfoque de  caixa de tamanho 5.
+![cats](https://github.com/danielsmar/UVV_Ling_Prog_CC3M/blob/main/PSET2/test_results/test_results_pset/test_blurred/cat.png)
+![cats_blurred](https://github.com/danielsmar/UVV_Ling_Prog_CC3M/blob/main/PSET2/test_results/test_results_pset/test_blurred/cat_blurred.png)
+
 ### QUESTÃO 05: se quisermos usar uma versão desfocada B que foi feita com um kernel de desfoque de caixa de 3 × 3, que kernel k poderíamos usar para calcular toda a imagem nítida com uma única correlação? Justifique sua resposta mostrando os cálculos.
 Utilizando filtro de nitidez na imagem python.png com um kernel de tamanho 11.
 
 ![python](https://github.com/danielsmar/UVV_Ling_Prog_CC3M/blob/main/PSET2/test_results/test_results_pset/test_sharpened/python.png)
 ![python_sharpened](https://github.com/danielsmar/UVV_Ling_Prog_CC3M/blob/main/PSET2/test_results/test_results_pset/test_sharpened/python_sharpened.png)
 
+         k1 = [[0, 0, 0],       k2 = [[1/9, 1/9, 1/9],          k_result = [[-1/9,-1/9, -1/9],
+               [0, 2, 0],     -       [1/9, 1/9, 1/9],     =                [-1/9, 17/9,-1/9], 
+               [0, 0, 0]]             [1/9, 1/9, 1/9]]                      [-1/9, -1/9,-1/9]
+               
+              
+
 ### QUESTÃO 06: explique o que cada um dos kernels acima, por si só, está fazendo. Tente executar mostrar nos resultados dessas correlações intermediárias para ter uma noção do que está acontecendo aqui.
-Evidencia as bordas no eixo X da imagem
+Detecta as bordas no eixo X (Horizontal) da imagem
        
         kx = [[-1, 0, 1],
               [-2, 0, 2],
               [-1, 0, 1]]
-Evidencia as bordas no eixo Y da imagem         
+Detecta as bordas no eixo Y (Vertical) da imagem         
      
        ky = [[-1, -2, -1],
              [ 0,  0,  0],
