@@ -39,7 +39,7 @@ O(x,y) = 32.76
 ![cats_blurred](https://github.com/danielsmar/UVV_Ling_Prog_CC3M/blob/main/PSET2/test_results/test_results_pset/test_blurred/cat_blurred.png)
 
 ### QUESTÃO 05: se quisermos usar uma versão desfocada B que foi feita com um kernel de desfoque de caixa de 3 × 3, que kernel k poderíamos usar para calcular toda a imagem nítida com uma única correlação? Justifique sua resposta mostrando os cálculos.
-Utilizando filtro de nitidez na imagem python.png com um kernel de tamanho 11.
+
 
 ![python](https://github.com/danielsmar/UVV_Ling_Prog_CC3M/blob/main/PSET2/test_results/test_results_pset/test_sharpened/python.png)
 ![python_sharpened](https://github.com/danielsmar/UVV_Ling_Prog_CC3M/blob/main/PSET2/test_results/test_results_pset/test_sharpened/python_sharpened.png)
