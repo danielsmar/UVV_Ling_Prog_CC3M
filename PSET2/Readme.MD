@@ -16,3 +16,10 @@
                   [-0.45,  1.20, -0.25],
                   [ 0.00, -0.12,  0.00]]
 ### Qual será o valor do pixel na imagem de saída no local indicado pelo destaque vermelho? Observe que neste ponto ainda não arredondamos ou recortamos o valor, informe exatamente como você calculou. Observação: demonstre passo a passo os cálculos realizados.
+![imagem_Q3](https://github.com/danielsmar/UVV_Ling_Prog_CC3M/blob/main/PSET2/test_results/imagem_Q3.png)
+
+O(x,y) = (0.00 * 80) + (-0.07 * 53) + (0.00 * 99) + (-0.45 * 129) + (1.20 * 127) + (-0.25 * 148) + (0.00 * 175) + (-0.12 * 174) + (0.00 * 193)
+
+O(x,y) = 0 + (-3.71) + 0 + (-58.05) + 152.4 + (-37) + 0 + 0 + (-20.88) + 0
+
+O(x,y) = 32.76
