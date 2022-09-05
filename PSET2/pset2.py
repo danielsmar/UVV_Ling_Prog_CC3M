@@ -11,18 +11,18 @@ from PIL import Image as PILImage
 ## NO ADDITIONAL IMPORTS ALLOWED!
 
 def kernel_blur(n):
-        return [[1 / (n ** 2) for x in range(n)]for x in range(n)]
+        return [[1 / pow(n,2) for x in range(n)]for x in range(n)]
 
-class Image:
-    def __init__(self, width, height, pixels):
+class Image:                                 
+    def __init__(self, width, height, pixels): #Define os valores na imagem (altura, comprimento,matriz do pixel)
         self.width = width
         self.height = height
         self.pixels = pixels
 
-    def get_pixel(self, x, y):
-        return self.pixels[y*self.width +x]
+    def get_pixel(self, x, y):#Retorna um pixel da imagem
+        return self.pixels[y*self.width +x] 
 
-    def set_pixel(self, x, y, c):
+    def set_pixel(self, x, y, c): #define o pixel da imagem
         self.pixels[y*self.width +x] = c
 
     def apply_per_pixel(self, func):
