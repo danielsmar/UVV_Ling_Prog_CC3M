@@ -90,6 +90,26 @@ class TestFilters(unittest.TestCase):
         result.save('test_results/test_results_pset/test_blurred/chess_correlated.png')
         
         self.assertTrue(im.correlate(kernel) == result )
+    
+    def test_correlate_1(self): 
+        
+        im = pset2.Image.load('test_images/pigbird.png')
+        im.save("test_results/test_results_pset/test_blurred/pigbird.png")
+        
+        kernel = [[0,0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                 [1, 0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0, 0]]
+        
+        result = im.correlate(kernel) 
+        result.save('test_results/test_results_pset/test_blurred/pigbird_correlated.png')
+        
+        self.assertTrue(im.correlate(kernel) == result )
 
     def test_blurred(self):
         for kernsize in (1, 3, 7):
@@ -105,10 +125,10 @@ class TestFilters(unittest.TestCase):
                     self.assertEqual(result,  expected)
 
     def test_blurred_1(self): 
-        img=pset2.Image.load('test_images/twocats.png')
-        img.save("test_results/test_results_pset/test_blurred/twocats.png")
-        result = img.blurred(3)
-        result.save('test_results/test_results_pset/test_blurred/twocats_blurred.png')
+        img=pset2.Image.load('test_images/cat.png')
+        img.save("test_results/test_results_pset/test_blurred/cat.png")
+        result = img.blurred(5)
+        result.save('test_results/test_results_pset/test_blurred/cat_blurred.png')
 
         self.assertNotEqual(result, img)
 
@@ -147,7 +167,7 @@ class TestFilters(unittest.TestCase):
     def test_sharpened_1(self):
         img=pset2.Image.load('test_images/python.png')
         img.save("test_results/test_results_pset/test_sharpened/python.png")
-        result = img.sharpened(2)
+        result = img.sharpened(11)
         result.save("test_results/test_results_pset/test_sharpened/python_sharpened.png")
 
         self.assertNotEqual(result, img)
